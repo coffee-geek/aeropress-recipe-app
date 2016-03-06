@@ -26,13 +26,25 @@ var ViewReactClass = React.createClass({
   fetchData: function() {
     var responseData = [
       {
-        name: "This is test 1",
+        stote_name: 'Light up coffee',
+        origin_name: 'Costarica',
+        beans_amount: 18,
+        water_amount: 200,
+        water_temp: 92,
       },
       {
-        name: "This is test 2",
+        stote_name: 'PNB Coffee',
+        origin_name: 'Kenya',
+        beans_amount: 18,
+        water_amount: 200,
+        water_temp: 92,
       },
       {
-        name: "This is test 3",
+        stote_name: 'Light up coffee',
+        origin_name: 'Costarica',
+        beans_amount: 18,
+        water_amount: 200,
+        water_temp: 92,
       }
     ];
     this.setState({
