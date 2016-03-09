@@ -12,6 +12,7 @@ var styles = require("./style");
 
 //View Elements
 var RecipeCell = require("./elements/recipe_cell");
+var RecipeView = require("../recipe");
 
 var ViewReactClass = React.createClass({
   getInitialState: function() {
@@ -88,8 +89,7 @@ var ViewReactClass = React.createClass({
       title: recipe.name,
       component: RecipeView,
       passProps: {
-          id: recipe.id,
-          name: recipe.name,
+          recipe: recipe,
       }
     });
   },
