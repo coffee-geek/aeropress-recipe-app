@@ -8,5 +8,6 @@ var {
 
 module.exports = StyleSheet.create({
   container: {
+    flex: 1,
   },
 });

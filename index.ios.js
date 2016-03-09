@@ -8,7 +8,8 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS
 } from 'react-native';
 
 var RecipesList = require('./app/components/recipes');
@@ -16,9 +17,14 @@ var RecipesList = require('./app/components/recipes');
 class coffeeLog extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <RecipesList></RecipesList>
-      </View>
+      <NavigatorIOS
+        ref='nav'
+        style={styles.container}
+        tintColor='#FF6600'
+        initialRoute={{
+          title: 'AREROPRESS',
+          component: RecipesList,
+        }}/>
     );
   }
 }
@@ -26,10 +32,7 @@ class coffeeLog extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    marginTop: 50,
   },
 });
 

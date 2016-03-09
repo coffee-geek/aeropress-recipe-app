@@ -13,13 +13,20 @@ module.exports = StyleSheet.create({
     borderColor: '#333',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'stretch'
+
   },
   leftPanel: {
-
   },
   rightPanel: {
-
+  },
+  recipeTitle: {
+    fontSize: 22,
+    marginTop: 10,
+  },
+  bold: {
+    fontWeight: 'bold'
   },
   image: {
     width: 70,
