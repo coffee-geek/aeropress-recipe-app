@@ -24,7 +24,7 @@ var RecipeCell = React.createClass({
         </View>
         <View style={styles.recipeDetailsContainer}>
           <Text style={styles.recipeTitle}>
-            {this.props.recipe.stote_name}
+            {this.props.recipe.store_name}
           </Text>
           <Text style={styles.originName}>
             <Text style={styles.bold}>Origin: </Text>

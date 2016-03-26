@@ -11,8 +11,7 @@ var {
 var styles = require("./style");
 
 //View Elements
-var RecipeCell = require("./elements/recipe_cell");
-var RecipeView = require("../recipe");
+var PlaceCell = require("./elements/place_cell");
 
 var ViewReactClass = React.createClass({
   getInitialState: function() {
@@ -27,25 +26,13 @@ var ViewReactClass = React.createClass({
   fetchData: function() {
     var responseData = [
       {
-        store_name: 'Light up coffee',
-        origin_name: 'Costarica',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        name: 'Light up coffee',
       },
       {
-        store_name: 'PNB Coffee',
-        origin_name: 'Kenya',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        name: 'PNB Coffee',
       },
       {
-        store_name: 'Light up coffee',
-        origin_name: 'Costarica',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        name: 'Light up coffee',
       }
     ];
     this.setState({
@@ -58,7 +45,7 @@ var ViewReactClass = React.createClass({
       return(
         <View style={styles.container}>
         <Text style={styles.loadingText}>
-          Fetching Recipes...
+          Fetching Places...
         </Text>
       </View>
       );
@@ -71,27 +58,21 @@ var ViewReactClass = React.createClass({
     return(
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={this.renderRecipeCell}
-        style={styles.recipesListView}/>
+        renderRow={this.renderPlaceCell}
+        style={styles.placesListView}/>
     );
   },
-  renderRecipeCell: function(recipe, sectionID, rowID){
+  renderPlaceCell: function(place, sectionID, rowID){
     return(
-      <RecipeCell
-        onSelect={() => this.selectRecipe(recipe)}
+      <PlaceCell
+        onSelect={() => this.selectPlace(place)}
         rowID={rowID}
         sectionID={sectionID}
-        recipe={recipe}/>
+        place={place}/>
     );
   },
-  selectRecipe: function(recipe){
-    this.props.navigator.push({
-      title: recipe.name,
-      component: RecipeView,
-      passProps: {
-          recipe: recipe,
-      }
-    });
+  selectPlace: function(place){
+    this.props.navigator.pop();
   },
 
 });
