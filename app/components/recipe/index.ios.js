@@ -33,6 +33,12 @@ var RecipeView = React.createClass({
       }
     });
   },
+  formatNumber: function(num) {
+    if (num) {
+      return String(num);
+    }
+    return String(0);
+  },
   render: function() {
     if (this.props.styles) {
       styles.container = this.props.styles;
@@ -67,7 +73,10 @@ var RecipeView = React.createClass({
           <Text style={styles.inputLabel}>
             BEANS:
           </Text>
-          <TextInput style={styles.textInput} value={String(this.props.recipe.beans_amount)}></TextInput>
+          <TextInput
+            keyboardType={"numbers-and-punctuation"}
+            style={styles.textInput}
+            value={this.formatNumber(this.props.recipe.beans_amount)}/>
           <Text style={styles.inputUnit}>g</Text>
         </View>
         <View style={styles.underline}></View>
@@ -76,7 +85,9 @@ var RecipeView = React.createClass({
           <Text style={styles.inputLabel}>
             HOT WATER:
           </Text>
-          <TextInput style={styles.textInput} value={String(this.props.recipe.water_amount)}></TextInput>
+          <TextInput
+            style={styles.textInput}
+            value={this.formatNumber(this.props.recipe.water_amount)}/>
           <Text style={styles.inputUnit}>ml</Text>
         </View>
         <View style={styles.underline}></View>
