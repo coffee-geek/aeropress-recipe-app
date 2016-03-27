@@ -26,15 +26,19 @@ var ViewReactClass = React.createClass({
   fetchData: function() {
     var responseData = [
       {
+        id: 1,
         name: 'KENYA',
       },
       {
+        id: 2,
         name: 'ETHIOPIA',
       },
       {
+        id: 3,
         name: 'COSTARICA',
       },
       {
+        id: 4,
         name: 'BRAZIL',
       }
     ];
@@ -65,16 +69,17 @@ var ViewReactClass = React.createClass({
         style={styles.placesListView}/>
     );
   },
-  renderOriginCell: function(place, sectionID, rowID){
+  renderOriginCell: function(origin, sectionID, rowID){
     return(
       <OriginCell
-        onSelect={() => this.selectOrigin(place)}
+        onSelect={() => this.selectOrigin(origin)}
         rowID={rowID}
         sectionID={sectionID}
-        place={place}/>
+        origin={origin}/>
     );
   },
-  selectOrigin: function(place){
+  selectOrigin: function(origin){
+    this.props.setOrigin(origin);
     this.props.navigator.pop();
   },
 

@@ -15,23 +15,46 @@ var PlacesView = require("./places")
 var OriginsView = require("./origins")
 
 var RecipeView = React.createClass({
-  selectPlace: function(recipe){
+  getInitialState: function() {
+    return {
+      recipe: Object.assign({}, this.props.recipe),
+    };
+  },
+  selectPlace: function(){
     this.props.navigator.push({
       title: 'PLACE',
       component: PlacesView,
       passProps: {
-          recipe: recipe,
+          recipe: this.state.recipe,
+          setPlace: (place) => this.setPlace(place),
       }
     });
   },
-  selectOrigin: function(recipe){
+  selectOrigin: function(){
     this.props.navigator.push({
       title: 'ORIGIN',
       component: OriginsView,
       passProps: {
-          recipe: recipe,
+          recipe: this.state.recipe,
+          setOrigin: (origin) => this.setOrigin(origin),
       }
     });
+  },
+  setPlace: function(place) {
+    var recipe = this.state.recipe;
+    recipe.place_id = place.id;
+    recipe.store_name = place.name;
+    this.setState({
+      recipe: recipe,
+    })
+  },
+  setOrigin: function(origin) {
+    var recipe = this.state.recipe;
+    recipe.origin_id = origin.id;
+    recipe.origin_name = origin.name;
+    this.setState({
+      recipe: recipe,
+    })
   },
   formatNumber: function(num) {
     if (num) {
@@ -40,9 +63,6 @@ var RecipeView = React.createClass({
     return String(0);
   },
   render: function() {
-    if (this.props.styles) {
-      styles.container = this.props.styles;
-    }
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -51,8 +71,8 @@ var RecipeView = React.createClass({
           </Text>
           <Text
             style={styles.selectableText}
-            onPress={this.selectPlace}>
-            {this.props.recipe.store_name}
+            onPress={() => this.selectPlace()}>
+            {this.state.recipe.store_name}
           </Text>
         </View>
         <View style={styles.underline}></View>
@@ -63,8 +83,8 @@ var RecipeView = React.createClass({
           </Text>
           <Text
             style={styles.selectableText}
-            onPress={this.selectOrigin}>
-            {this.props.recipe.origin_name}
+            onPress={() => this.selectOrigin()}>
+            {this.state.recipe.origin_name}
           </Text>
         </View>
         <View style={styles.underline}></View>
@@ -76,7 +96,7 @@ var RecipeView = React.createClass({
           <TextInput
             keyboardType={"numbers-and-punctuation"}
             style={styles.textInput}
-            value={this.formatNumber(this.props.recipe.beans_amount)}/>
+            value={this.formatNumber(this.state.recipe.beans_amount)}/>
           <Text style={styles.inputUnit}>g</Text>
         </View>
         <View style={styles.underline}></View>
@@ -86,8 +106,9 @@ var RecipeView = React.createClass({
             HOT WATER:
           </Text>
           <TextInput
+            keyboardType={"numbers-and-punctuation"}
             style={styles.textInput}
-            value={this.formatNumber(this.props.recipe.water_amount)}/>
+            value={this.formatNumber(this.state.recipe.water_amount)}/>
           <Text style={styles.inputUnit}>ml</Text>
         </View>
         <View style={styles.underline}></View>
@@ -96,7 +117,10 @@ var RecipeView = React.createClass({
           <Text style={styles.inputLabel}>
             WATER TEMP:
           </Text>
-          <TextInput style={styles.textInput} value={String(this.props.recipe.water_temp)}></TextInput>
+          <TextInput
+            keyboardType={"numbers-and-punctuation"}
+            style={styles.textInput}
+            value={this.formatNumber(this.state.recipe.water_temp)}/>
           <Text style={styles.inputUnit} >℃</Text>
         </View>
         <View style={styles.underline}></View>

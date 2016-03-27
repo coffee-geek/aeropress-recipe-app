@@ -26,15 +26,19 @@ var ViewReactClass = React.createClass({
   fetchData: function() {
     var responseData = [
       {
+        id: 1,
         name: 'Light up coffee',
       },
       {
+        id: 2,
         name: 'PNB Coffee',
       },
       {
+        id: 3,
         name: 'Light up coffee',
       },
       {
+        id: 4,
         name: '猿田彦コーヒー　アトリエ仙川',
       }
     ];
@@ -75,6 +79,7 @@ var ViewReactClass = React.createClass({
     );
   },
   selectPlace: function(place){
+    this.props.setPlace(place);
     this.props.navigator.pop();
   },
 

@@ -16,9 +16,9 @@ var OriginCell = React.createClass({
     return (
       <TouchableHighlight onPress={this.props.onSelect}>
       <View style={styles.container}>
-        <View style={styles.placeDetailsContainer}>
-          <Text style={styles.placeTitle}>
-            {this.props.place.name}
+        <View style={styles.originDetailsContainer}>
+          <Text style={styles.originTitle}>
+            {this.props.origin.name}
           </Text>
           <Text style={styles.waterTemp}>
           </Text>
