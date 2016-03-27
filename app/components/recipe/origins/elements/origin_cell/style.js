@@ -13,15 +13,14 @@ module.exports = StyleSheet.create({
     borderColor: '#333',
     flex: 1,
     flexDirection: 'row',
-
   },
   leftPanel: {
   },
   rightPanel: {
   },
   placeTitle: {
-    fontSize: 22,
-    marginTop: 10,
+    fontSize: 18,
+    marginTop: 5,
   },
   bold: {
     fontWeight: 'bold'

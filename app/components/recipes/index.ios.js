@@ -6,6 +6,7 @@ var {
   Text,
   View,
   ListView,
+  ScrollView,
 } = React;
 
 var styles = require("./style");
@@ -13,6 +14,7 @@ var styles = require("./style");
 //View Elements
 var RecipeCell = require("./elements/recipe_cell");
 var RecipeView = require("../recipe");
+var FooterView = require("../footer");
 
 var ViewReactClass = React.createClass({
   getInitialState: function() {
@@ -64,7 +66,12 @@ var ViewReactClass = React.createClass({
       );
     }
     return (
-      this.renderListView()
+      <View style={styles.container}>
+        <ScrollView>
+          {this.renderListView()}
+        </ScrollView>
+        <FooterView navigator={this.props.navigator}/>
+      </View>
     );
   },
   renderListView: function(){

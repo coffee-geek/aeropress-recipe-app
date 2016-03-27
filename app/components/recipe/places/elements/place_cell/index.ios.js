@@ -19,7 +19,7 @@ var PlaceCell = React.createClass({
         <View style={styles.leftPanel}>
           <Image
             style={styles.image}
-            source={require('../../../../images/aeropress.png')}
+            source={require('../../../../../images/place.png')}
             />
         </View>
         <View style={styles.placeDetailsContainer}>

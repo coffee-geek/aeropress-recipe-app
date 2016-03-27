@@ -33,6 +33,9 @@ var ViewReactClass = React.createClass({
       },
       {
         name: 'Light up coffee',
+      },
+      {
+        name: '猿田彦コーヒー　アトリエ仙川',
       }
     ];
     this.setState({

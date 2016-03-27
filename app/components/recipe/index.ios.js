@@ -11,7 +11,8 @@ var {
 } = React;
 
 var styles = require("./style");
-var PlacesView = require("../places")
+var PlacesView = require("./places")
+var OriginsView = require("./origins")
 
 var RecipeView = React.createClass({
   selectPlace: function(recipe){
@@ -23,16 +24,30 @@ var RecipeView = React.createClass({
       }
     });
   },
+  selectOrigin: function(recipe){
+    this.props.navigator.push({
+      title: 'ORIGIN',
+      component: OriginsView,
+      passProps: {
+          recipe: recipe,
+      }
+    });
+  },
   render: function() {
+    if (this.props.styles) {
+      styles.container = this.props.styles;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.row}>
           <Text style={styles.inputLabel}>
             PLACE:
           </Text>
-          <TextInput style={styles.textInput}
-            onFocus={this.selectPlace}
-            value={this.props.recipe.store_name}></TextInput>
+          <Text
+            style={styles.selectableText}
+            onPress={this.selectPlace}>
+            {this.props.recipe.store_name}
+          </Text>
         </View>
         <View style={styles.underline}></View>
 
@@ -40,7 +55,11 @@ var RecipeView = React.createClass({
           <Text style={styles.inputLabel}>
             ORIGIN:
           </Text>
-          <TextInput style={styles.textInput} value={this.props.recipe.origin_name}></TextInput>
+          <Text
+            style={styles.selectableText}
+            onPress={this.selectOrigin}>
+            {this.props.recipe.origin_name}
+          </Text>
         </View>
         <View style={styles.underline}></View>
 
@@ -70,6 +89,13 @@ var RecipeView = React.createClass({
           <Text style={styles.inputUnit} >℃</Text>
         </View>
         <View style={styles.underline}></View>
+
+        <View style={styles.row}>
+          <TextInput
+            style={styles.note}
+            multiline={true}
+            placeholder={"NOTE"}></TextInput>
+        </View>
 
       </View>
     );
