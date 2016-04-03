@@ -9,22 +9,20 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  Navigator
 } from 'react-native';
 
-var RecipesList = require('./app/components/recipes');
+import ExNavigator from '@exponent/react-native-navigator';
+let Router = require('./app/router.js');
 
 class coffeeLog extends Component {
   render() {
     return (
-      <NavigatorIOS
+      <ExNavigator
         ref='nav'
         style={styles.container}
         tintColor='#FF6600'
-        initialRoute={{
-          title: 'AREROPRESS',
-          component: RecipesList,
-        }}/>
+        initialRoute={Router.getMainRoute()} />
     );
   }
 }

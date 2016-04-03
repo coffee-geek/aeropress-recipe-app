@@ -15,6 +15,7 @@ var styles = require("./style");
 var RecipeCell = require("./elements/recipe_cell");
 var RecipeView = require("../recipe");
 var FooterView = require("../footer");
+let Router = require("../../router.js");
 
 var ViewReactClass = React.createClass({
   getInitialState: function() {
@@ -81,7 +82,9 @@ var ViewReactClass = React.createClass({
         <ScrollView>
           {this.renderListView()}
         </ScrollView>
-        <FooterView navigator={this.props.navigator}/>
+        <FooterView
+          navigator={this.props.navigator}
+          showNewRecipeView={this.props.showNewRecipeView}/>
       </View>
     );
   },
@@ -103,13 +106,8 @@ var ViewReactClass = React.createClass({
     );
   },
   selectRecipe: function(recipe){
-    this.props.navigator.push({
-      title: recipe.name,
-      component: RecipeView,
-      passProps: {
-          recipe: recipe,
-      }
-    });
+    let route = Router.getRecipeRoute(recipe);
+    this.props.navigator.push(route);
   },
 
 });

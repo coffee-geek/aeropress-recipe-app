@@ -11,8 +11,9 @@ var {
 } = React;
 
 var styles = require("./style");
-var PlacesView = require("./places")
-var OriginsView = require("./origins")
+var PlacesView = require("./places");
+var OriginsView = require("./origins");
+let Router = require("../../router.js");
 
 var RecipeView = React.createClass({
   getInitialState: function() {
@@ -21,24 +22,18 @@ var RecipeView = React.createClass({
     };
   },
   selectPlace: function(){
-    this.props.navigator.push({
-      title: 'PLACE',
-      component: PlacesView,
-      passProps: {
-          recipe: this.state.recipe,
-          setPlace: (place) => this.setPlace(place),
-      }
+    let route = Router.getPlacesRoute({
+        recipe: this.state.recipe,
+        setPlace: (place) => this.setPlace(place),
     });
+    this.props.navigator.push(route);
   },
   selectOrigin: function(){
-    this.props.navigator.push({
-      title: 'ORIGIN',
-      component: OriginsView,
-      passProps: {
-          recipe: this.state.recipe,
-          setOrigin: (origin) => this.setOrigin(origin),
-      }
+    let route = Router.getOriginsRoute({
+        recipe: this.state.recipe,
+        setOrigin: (origin) => this.setOrigin(origin),
     });
+    this.props.navigator.push(route);
   },
   setPlace: function(place) {
     var recipe = this.state.recipe;

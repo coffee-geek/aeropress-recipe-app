@@ -8,27 +8,17 @@ var {
   View,
   TouchableHighlight,
   Image,
+  Navigator,
 } = React;
 
 var styles = require("./style");
-var RecipeView = require("../recipe")
+var RecipeView = require("../recipe");
+let Router = require("../../router.js");
 
 var FooterView = React.createClass({
   createNewRecipe: function(recipe){
-    this.props.navigator.push({
-      title: 'NEW RECIPE',
-      component: RecipeView,
-      passProps: {
-        recipe: {},
-      },
-      leftButtonTitle: 'CLOSE',
-      onLeftButtonPress: () => this.props.navigator.pop(),
-      rightButtonTitle: 'SAVE',
-      onRightButtonPress: () => {
-        // TODO save recipe
-        this.props.navigator.pop();
-      },
-    });
+    let route = Router.getNewRecipeRoute();
+    this.props.navigator.push(route)
   },
   render: function() {
     return (
