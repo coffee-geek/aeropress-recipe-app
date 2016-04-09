@@ -18,8 +18,12 @@ var StepListView = React.createClass({
     this.props.navigator.push(route);
   },
   render: function() {
+    if (!this.props.steps || this.props.steps.length === 0) {
+      return null;
+    }
     return (
       <View>
+        <Text>STEPS</Text>
         {this.props.steps.map((step, index)=> {
           return (
             <StepCell

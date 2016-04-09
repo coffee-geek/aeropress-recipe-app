@@ -38,6 +38,21 @@ var ViewReactClass = React.createClass({
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+          },
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          },
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          },
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
           }
         ]
       },
@@ -69,13 +84,7 @@ var ViewReactClass = React.createClass({
         id: 4,
         store_name: 'NOZY COFFEE',
         origin_name: 'Costarica',
-        steps: [
-          {
-            beans_amount: 18,
-            water_amount: 200,
-            water_temp: 92,
-          }
-        ]
+        steps: []
       }
     ];
     this.setState({

@@ -8,6 +8,7 @@ var {
   View,
   ListView,
   Image,
+  ScrollView,
 } = React;
 
 var styles = require("./style");
@@ -64,53 +65,54 @@ var RecipeView = React.createClass({
   },
   render: function() {
     return (
-      <View style={styles.container}>
-        <View style={styles.row}>
-          <Text style={styles.inputLabel}>
-            PLACE:
-          </Text>
-          <Text
-            style={styles.selectableText}
-            onPress={() => this.selectPlace()}>
-            {this.state.recipe.store_name}
-          </Text>
-        </View>
-        <View style={styles.underline}></View>
-
-        <View style={styles.row}>
-          <Text style={styles.inputLabel}>
-            ORIGIN:
-          </Text>
-          <Text
-            style={styles.selectableText}
-            onPress={() => this.selectOrigin()}>
-            {this.state.recipe.origin_name}
-          </Text>
-        </View>
-        <View style={styles.underline}></View>
-
-        <View style={styles.row}>
-          <Text style={styles.inputLabel}>
-            METHOD:
-          </Text>
-          <Text
-            style={styles.selectableText}>
-            STANDARD
-          </Text>
-        </View>
-        <View style={styles.underline}></View>
-
-        {this.renderStepListView()}
-
-        <View style={styles.row_center}>
-          <View style={styles.button}>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.row}>
+            <Text style={styles.inputLabel}>
+              PLACE:
+            </Text>
             <Text
-              style={styles.button_text}
-              onPress={() => this.addNewStep()}>＋ ADD A STEP</Text>
+              style={styles.selectableText}
+              onPress={() => this.selectPlace()}>
+              {this.state.recipe.store_name}
+            </Text>
+          </View>
+          <View style={styles.underline}></View>
+
+          <View style={styles.row}>
+            <Text style={styles.inputLabel}>
+              ORIGIN:
+            </Text>
+            <Text
+              style={styles.selectableText}
+              onPress={() => this.selectOrigin()}>
+              {this.state.recipe.origin_name}
+            </Text>
+          </View>
+          <View style={styles.underline}></View>
+
+          <View style={styles.row}>
+            <Text style={styles.inputLabel}>
+              METHOD:
+            </Text>
+            <Text
+              style={styles.selectableText}>
+              STANDARD
+            </Text>
+          </View>
+          <View style={styles.underline}></View>
+
+          {this.renderStepListView()}
+
+          <View style={styles.row_center}>
+            <View style={styles.button}>
+              <Text
+                style={styles.button_text}
+                onPress={() => this.addNewStep()}>＋ ADD A STEP</Text>
+            </View>
           </View>
         </View>
-
-      </View>
+      </ScrollView>
     );
   }
 });

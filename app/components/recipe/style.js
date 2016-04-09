@@ -10,6 +10,7 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 70,
+    marginBottom: 70,
   },
   row: {
     height: 44,
