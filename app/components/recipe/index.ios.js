@@ -6,18 +6,20 @@ var {
   Text,
   TextInput,
   View,
-  TouchableHighlight,
+  ListView,
   Image,
 } = React;
 
 var styles = require("./style");
 var PlacesView = require("./places");
 var OriginsView = require("./origins");
+var StepCell = require("./steps/elements/step_cell");
 
 var RecipeView = React.createClass({
   getInitialState: function() {
     return {
       recipe: Object.assign({}, this.props.recipe),
+      steps: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     };
   },
   selectPlace: function(){
@@ -50,11 +52,24 @@ var RecipeView = React.createClass({
       recipe: recipe,
     })
   },
-  formatNumber: function(num) {
-    if (num) {
-      return String(num);
-    }
-    return String(0);
+  addNewStep: function() {
+    let route = require("../../router.js").getNewStepRoute();
+    this.props.navigator.push(route);
+  },
+  renderStepCell: function() {
+    return (
+      <StepCell/>
+    );
+  },
+  renderStepListView: function() {
+    return (
+      <View>
+        <ListView
+          dataSource={this.state.steps}
+          renderRow={this.renderStepCell}
+          style={styles.stepListView}/>
+      </View>
+    );
   },
   render: function() {
     return (
@@ -85,45 +100,23 @@ var RecipeView = React.createClass({
 
         <View style={styles.row}>
           <Text style={styles.inputLabel}>
-            BEANS:
+            METHOD:
           </Text>
-          <TextInput
-            keyboardType={"numbers-and-punctuation"}
-            style={styles.textInput}
-            value={this.formatNumber(this.state.recipe.beans_amount)}/>
-          <Text style={styles.inputUnit}>g</Text>
+          <Text
+            style={styles.selectableText}>
+            STANDARD
+          </Text>
         </View>
         <View style={styles.underline}></View>
 
-        <View style={styles.row}>
-          <Text style={styles.inputLabel}>
-            HOT WATER:
-          </Text>
-          <TextInput
-            keyboardType={"numbers-and-punctuation"}
-            style={styles.textInput}
-            value={this.formatNumber(this.state.recipe.water_amount)}/>
-          <Text style={styles.inputUnit}>ml</Text>
-        </View>
-        <View style={styles.underline}></View>
+        {this.renderStepListView()}
 
-        <View style={styles.row}>
-          <Text style={styles.inputLabel}>
-            WATER TEMP:
-          </Text>
-          <TextInput
-            keyboardType={"numbers-and-punctuation"}
-            style={styles.textInput}
-            value={this.formatNumber(this.state.recipe.water_temp)}/>
-          <Text style={styles.inputUnit} >℃</Text>
-        </View>
-        <View style={styles.underline}></View>
-
-        <View style={styles.row}>
-          <TextInput
-            style={styles.note}
-            multiline={true}
-            placeholder={"NOTE"}></TextInput>
+        <View style={styles.row_center}>
+          <View style={styles.button}>
+            <Text
+              style={styles.button_text}
+              onPress={() => this.addNewStep()}>＋ ADD A STEP</Text>
+          </View>
         </View>
 
       </View>

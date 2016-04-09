@@ -63,7 +63,7 @@ module.exports = StyleSheet.create({
     borderColor: 'gray',
     backgroundColor: '#c3c3c3',
     borderRadius: 20,
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 20,
   },
   button_text: {

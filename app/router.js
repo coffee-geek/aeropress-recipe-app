@@ -12,6 +12,7 @@ let RecipeView = require('./components/recipe');
 var Button = require('react-native-button');
 let OriginsView = require('./components/recipe/origins');
 let PlacesView = require('./components/recipe/places');
+let StepView = require('./components/recipe/add_step');
 
 let Router = {
   getMainRoute() {
@@ -88,6 +89,34 @@ let Router = {
       }
     }
   },
+
+  getNewStepRoute() {
+    return {
+      renderScene(navigator) {
+        return (
+          <StepView
+            navigator={navigator}/>
+        );
+      },
+      configureScene(route) {
+        return ExSceneConfigs.FloatFromBottom;
+      },
+      renderLeftButton(navigator) {
+        return (
+          <Button onPress={()=> navigator.pop()}>
+            CANCEL
+          </Button>
+        );
+      },
+      renderRightButton(navigator) {
+        return (
+          <Button onPress={()=> navigator.pop()}>
+            ADD
+          </Button>
+        );
+      }
+    }
+  }
 };
 
 var styles = {
