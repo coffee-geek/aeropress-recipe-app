@@ -13,13 +13,12 @@ var {
 var styles = require("./style");
 var PlacesView = require("./places");
 var OriginsView = require("./origins");
-var StepCell = require("./steps/elements/step_cell");
+var StepListView = require("./steps");
 
 var RecipeView = React.createClass({
   getInitialState: function() {
     return {
       recipe: Object.assign({}, this.props.recipe),
-      steps: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     };
   },
   selectPlace: function(){
@@ -56,19 +55,11 @@ var RecipeView = React.createClass({
     let route = require("../../router.js").getNewStepRoute();
     this.props.navigator.push(route);
   },
-  renderStepCell: function() {
-    return (
-      <StepCell/>
-    );
-  },
   renderStepListView: function() {
     return (
-      <View>
-        <ListView
-          dataSource={this.state.steps}
-          renderRow={this.renderStepCell}
-          style={styles.stepListView}/>
-      </View>
+      <StepListView
+        navigator={this.props.navigator}
+        steps={this.state.recipe.steps}/>
     );
   },
   render: function() {

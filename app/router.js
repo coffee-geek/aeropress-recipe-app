@@ -116,6 +116,33 @@ let Router = {
         );
       }
     }
+  },
+  getEditStepRoute() {
+    return {
+      renderScene(navigator) {
+        return (
+          <StepView
+            navigator={navigator}/>
+        );
+      },
+      configureScene(route) {
+        return ExSceneConfigs.FloatFromBottom;
+      },
+      renderLeftButton(navigator) {
+        return (
+          <Button onPress={()=> navigator.pop()}>
+            CANCEL
+          </Button>
+        );
+      },
+      renderRightButton(navigator) {
+        return (
+          <Button onPress={()=> navigator.pop()}>
+            EDIT
+          </Button>
+        );
+      }
+    }
   }
 };
 

@@ -33,33 +33,49 @@ var ViewReactClass = React.createClass({
         id: 1,
         store_name: 'Light up coffee',
         origin_name: 'Costarica',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        steps: [
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          }
+        ]
       },
       {
         id: 2,
         store_name: 'PNB Coffee',
         origin_name: 'Kenya',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        steps: [
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          }
+        ]
       },
       {
         id: 3,
         store_name: 'Light up coffee',
         origin_name: 'Costarica',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        steps: [
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          }
+        ]
       },
       {
         id: 4,
         store_name: 'NOZY COFFEE',
         origin_name: 'Costarica',
-        beans_amount: 18,
-        water_amount: 200,
-        water_temp: 92,
+        steps: [
+          {
+            beans_amount: 18,
+            water_amount: 200,
+            water_temp: 92,
+          }
+        ]
       }
     ];
     this.setState({
