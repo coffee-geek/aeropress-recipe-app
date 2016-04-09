@@ -59,7 +59,7 @@ let Router = {
               SAVE
             </Button>
           );
-        },
+        }
       }
   },
 
@@ -70,13 +70,13 @@ let Router = {
           <OriginsView
             navigator={navigator}
             recipe={passProps.recipe}
-            setPlace={passProps.setPlace} />
+            setOrigin={passProps.setOrigin} />
         );
       }
     }
   },
 
-  getPlacesRoute(passProps: any) {
+  getPlacesRoute(passProps) {
     return {
       renderScene(navigator) {
         return (

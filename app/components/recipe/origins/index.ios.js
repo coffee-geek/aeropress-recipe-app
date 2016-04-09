@@ -51,14 +51,16 @@ var ViewReactClass = React.createClass({
     if(!this.state.loaded){
       return(
         <View style={styles.container}>
-        <Text style={styles.loadingText}>
-          Fetching Origins...
-        </Text>
-      </View>
+          <Text style={styles.loadingText}>
+            Fetching Origins...
+          </Text>
+        </View>
       );
     }
     return (
-      this.renderListView()
+      <View style={styles.container}>
+        {this.renderListView()}
+      </View>
     );
   },
   renderListView: function(){

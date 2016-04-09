@@ -13,7 +13,6 @@ var {
 var styles = require("./style");
 var PlacesView = require("./places");
 var OriginsView = require("./origins");
-let Router = require("../../router.js");
 
 var RecipeView = React.createClass({
   getInitialState: function() {
@@ -22,14 +21,14 @@ var RecipeView = React.createClass({
     };
   },
   selectPlace: function(){
-    let route = Router.getPlacesRoute({
+    let route = require("../../router.js").getPlacesRoute({
         recipe: this.state.recipe,
         setPlace: (place) => this.setPlace(place),
     });
     this.props.navigator.push(route);
   },
   selectOrigin: function(){
-    let route = Router.getOriginsRoute({
+    let route = require("../../router.js").getOriginsRoute({
         recipe: this.state.recipe,
         setOrigin: (origin) => this.setOrigin(origin),
     });
