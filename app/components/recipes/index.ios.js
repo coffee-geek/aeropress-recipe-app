@@ -33,6 +33,7 @@ var ViewReactClass = React.createClass({
         id: 1,
         store_name: 'Light up coffee',
         origin_name: 'Costarica',
+        method_name: 'STANDARD',
         steps: [
           {
             beans_amount: 18,
@@ -60,6 +61,7 @@ var ViewReactClass = React.createClass({
         id: 2,
         store_name: 'PNB Coffee',
         origin_name: 'Kenya',
+        method_name: 'STANDARD',
         steps: [
           {
             beans_amount: 18,
@@ -72,6 +74,7 @@ var ViewReactClass = React.createClass({
         id: 3,
         store_name: 'Light up coffee',
         origin_name: 'Costarica',
+        method_name: 'STANDARD',
         steps: [
           {
             beans_amount: 18,
@@ -84,6 +87,7 @@ var ViewReactClass = React.createClass({
         id: 4,
         store_name: 'NOZY COFFEE',
         origin_name: 'Costarica',
+        method_name: 'STANDARD',
         steps: []
       }
     ];

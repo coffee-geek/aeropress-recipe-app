@@ -2,41 +2,43 @@
 
 var React = require('react-native');
 
-var {
+let {
   Text,
   TextInput,
   View,
   ListView,
   Image,
   ScrollView,
+  PickerIOS,
 } = React;
+let PickerItemIOS = PickerIOS.Item;
 
-var styles = require("./style");
-var PlacesView = require("./places");
-var OriginsView = require("./origins");
-var StepListView = require("./steps");
+let styles = require("./style");
+let PlacesView = require("./places");
+let OriginsView = require("./origins");
+let StepListView = require("./steps");
 
-var RecipeView = React.createClass({
-  getInitialState: function() {
+let RecipeView = React.createClass({
+  getInitialState() {
     return {
       recipe: Object.assign({}, this.props.recipe),
     };
   },
-  selectPlace: function(){
+  selectPlace(){
     let route = require("../../router.js").getPlacesRoute({
         recipe: this.state.recipe,
         setPlace: (place) => this.setPlace(place),
     });
     this.props.navigator.push(route);
   },
-  selectOrigin: function(){
+  selectOrigin(){
     let route = require("../../router.js").getOriginsRoute({
         recipe: this.state.recipe,
         setOrigin: (origin) => this.setOrigin(origin),
     });
     this.props.navigator.push(route);
   },
-  setPlace: function(place) {
+  setPlace(place) {
     var recipe = this.state.recipe;
     recipe.place_id = place.id;
     recipe.store_name = place.name;
@@ -95,10 +97,18 @@ var RecipeView = React.createClass({
             <Text style={styles.inputLabel}>
               METHOD:
             </Text>
-            <Text
-              style={styles.selectableText}>
-              STANDARD
-            </Text>
+            <PickerIOS
+              style={{flex:1}}
+              selectedValue={this.state.recipe.method_name}
+              onValueChange={(name) => console.log(name) }>
+              {['STANDARD', 'INVERTED'].map((name, index) => (
+                <PickerItemIOS
+                  key={index}
+                  value={name}
+                  label={name}
+                />
+              ))}
+            </PickerIOS>
           </View>
           <View style={styles.underline}></View>
 

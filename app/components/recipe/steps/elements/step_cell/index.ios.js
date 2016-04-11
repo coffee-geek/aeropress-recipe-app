@@ -9,21 +9,21 @@ var {
   Image,
 } = React;
 
-var styles = require("./style");
+let styles = require("./style");
 
-var StepView = React.createClass({
-  getInitialState: function() {
+let StepView = React.createClass({
+  getInitialState() {
     return {
       step: Object.assign({}, this.props.step),
     };
   },
-  formatNumber: function(num) {
+  formatNumber(num) {
     if (num) {
       return String(num);
     }
     return String(0);
   },
-  render: function() {
+  render() {
     return (
       <TouchableHighlight onPress={this.props.onSelect}>
         <View style={styles.container}>

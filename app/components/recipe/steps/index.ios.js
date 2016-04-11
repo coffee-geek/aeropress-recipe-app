@@ -1,23 +1,23 @@
 'use strict';
 
-var React = require('react-native');
+let React = require('react-native');
 
-var {
+let {
   Text,
   TextInput,
   View,
   Image,
 } = React;
 
-var styles = require("./style");
-var StepCell = require("./elements/step_cell");
+let styles = require("./style");
+let StepCell = require("./elements/step_cell");
 
-var StepListView = React.createClass({
-  selectStep: function(step){
+let StepListView = React.createClass({
+  selectStep(step){
     let route = require("../../../router.js").getEditStepRoute(step);
     this.props.navigator.push(route);
   },
-  render: function() {
+  render() {
     if (!this.props.steps || this.props.steps.length === 0) {
       return null;
     }
