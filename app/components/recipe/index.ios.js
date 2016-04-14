@@ -9,19 +9,21 @@ let {
   ListView,
   Image,
   ScrollView,
-  PickerIOS,
+  Dimensions,
 } = React;
-let PickerItemIOS = PickerIOS.Item;
+import Picker from 'react-native-picker'
 
 let styles = require("./style");
 let PlacesView = require("./places");
 let OriginsView = require("./origins");
 let StepListView = require("./steps");
 
+
 let RecipeView = React.createClass({
   getInitialState() {
     return {
       recipe: Object.assign({}, this.props.recipe),
+      isShowMethodPicker: false,
     };
   },
   selectPlace(){
@@ -65,10 +67,37 @@ let RecipeView = React.createClass({
         steps={this.state.recipe.steps}/>
     );
   },
+  toggleMethodPicker: function() {
+    this.setState({
+      isShowMethodPicker: !this.state.isShowMethodPicker,
+    });
+  },
+  renderMethodPicker: function() {
+    if (this.state.isShowMethodPicker) {
+      return (
+        <View>
+          <Picker
+            style={{height: 320}}
+            selectedValue={this.state.recipe.method_name}
+            onValueChange={(name) => console.log(name) }
+            pickerData={['STANDARD', 'INVERTED']}
+            onPickerDone={(val)=> {
+              this.state.recipe.method_name = val;
+              this.setState({
+                recipe: this.state.recipe
+              })
+            }}>
+          </Picker>
+        </View>
+      );
+    } else {
+      return null;
+    }
+  },
   render: function() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      <View style={{flex:1}}>
+        <ScrollView style={styles.container}>
           <View style={styles.row}>
             <Text style={styles.inputLabel}>
               PLACE:
@@ -97,18 +126,11 @@ let RecipeView = React.createClass({
             <Text style={styles.inputLabel}>
               METHOD:
             </Text>
-            <PickerIOS
-              style={{flex:1}}
-              selectedValue={this.state.recipe.method_name}
-              onValueChange={(name) => console.log(name) }>
-              {['STANDARD', 'INVERTED'].map((name, index) => (
-                <PickerItemIOS
-                  key={index}
-                  value={name}
-                  label={name}
-                />
-              ))}
-            </PickerIOS>
+            <Text
+              style={styles.selectableText}
+              onPress={() => this.toggleMethodPicker()}>
+              {this.state.recipe.method_name}
+            </Text>
           </View>
           <View style={styles.underline}></View>
 
@@ -121,8 +143,10 @@ let RecipeView = React.createClass({
                 onPress={() => this.addNewStep()}>＋ ADD A STEP</Text>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+
+          {this.renderMethodPicker()}
+      </View>
     );
   }
 });

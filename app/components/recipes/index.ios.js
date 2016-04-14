@@ -39,21 +39,25 @@ var ViewReactClass = React.createClass({
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: "test"
           },
           {
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: ""
           },
           {
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: ""
           },
           {
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: ""
           }
         ]
       },
@@ -67,6 +71,7 @@ var ViewReactClass = React.createClass({
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: ""
           }
         ]
       },
@@ -80,6 +85,7 @@ var ViewReactClass = React.createClass({
             beans_amount: 18,
             water_amount: 200,
             water_temp: 92,
+            note: ""
           }
         ]
       },

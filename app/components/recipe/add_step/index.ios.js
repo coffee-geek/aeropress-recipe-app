@@ -35,7 +35,8 @@ var StepView = React.createClass({
             <TextInput
               keyboardType={"numbers-and-punctuation"}
               style={styles.textInput}
-              value={this.formatNumber(this.state.step.beans_amount)}/>
+              value={this.state.step.beans_amount}
+              onChangeText={(val) => this.setState({state: Object.assign(this.state.step, {beans_amount: val})})}/>
             <Text style={styles.inputUnit}>g</Text>
           </View>
           <View style={styles.underline}></View>
@@ -47,7 +48,8 @@ var StepView = React.createClass({
             <TextInput
               keyboardType={"numbers-and-punctuation"}
               style={styles.textInput}
-              value={this.formatNumber(this.state.step.water_amount)}/>
+              value={this.state.step.water_amount}
+              onChangeText={(val) => this.setState({state: Object.assign(this.state.step, {water_amount: val})})}/>
             <Text style={styles.inputUnit}>ml</Text>
           </View>
           <View style={styles.underline}></View>
@@ -59,7 +61,8 @@ var StepView = React.createClass({
             <TextInput
               keyboardType={"numbers-and-punctuation"}
               style={styles.textInput}
-              value={this.formatNumber(this.state.step.water_temp)}/>
+              value={this.state.step.water_temp}
+              onChangeText={(val) => this.setState({state: Object.assign(this.state.step, {water_temp: val})})}/>
             <Text style={styles.inputUnit} >℃</Text>
           </View>
           <View style={styles.underline}></View>
@@ -68,7 +71,9 @@ var StepView = React.createClass({
             <TextInput
               style={styles.note}
               multiline={true}
-              placeholder={"NOTE"}></TextInput>
+              placeholder={"NOTE"}
+              value={this.state.step.note}
+              onChangeText={(val) => this.setState({state: Object.assign(this.state.step, {note: val})})}></TextInput>
           </View>
         </View>
       </TouchableHighlight>

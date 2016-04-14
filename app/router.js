@@ -41,7 +41,9 @@ let Router = {
           return (
             <RecipeView
               navigator={navigator}
-              recipe={{}} />
+              recipe={{
+                method_name: 'STANDARD'
+              }} />
           );
         },
         configureScene(route) {
