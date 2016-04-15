@@ -24,6 +24,9 @@ var StepView = React.createClass({
     }
     return String(0);
   },
+  pressAdd: function() {
+    this.props.callback(this.state.step);
+  },
   render: function() {
     return (
       <TouchableHighlight onPress={this.props.onSelect}>

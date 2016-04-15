@@ -55,8 +55,17 @@ let RecipeView = React.createClass({
       recipe: recipe,
     })
   },
-  addNewStep: function() {
-    let route = require("../../router.js").getNewStepRoute();
+  addNewStep: function(step) {
+    var recipe = this.state.recipe;
+    recipe.steps.push(step);
+    this.setState({
+      recipe: recipe,
+    });
+  },
+  showNewStep: function() {
+    let route = require("../../router.js").getNewStepRoute({
+      callback: this.addNewStep,
+    });
     this.props.navigator.push(route);
   },
   renderStepListView: function() {
@@ -132,7 +141,7 @@ let RecipeView = React.createClass({
             <View style={styles.button}>
               <Text
                 style={styles.button_text}
-                onPress={() => this.addNewStep()}>＋ ADD A STEP</Text>
+                onPress={() => this.showNewStep()}>＋ ADD A STEP</Text>
             </View>
           </View>
         </ScrollView>

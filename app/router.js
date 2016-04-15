@@ -42,7 +42,8 @@ let Router = {
             <RecipeView
               navigator={navigator}
               recipe={{
-                method_name: 'STANDARD'
+                method_name: 'STANDARD',
+                steps: []
               }} />
           );
         },
@@ -92,11 +93,13 @@ let Router = {
     }
   },
 
-  getNewStepRoute() {
+  getNewStepRoute(passProps) {
     return {
       renderScene(navigator) {
         return (
           <StepView
+            ref={stepView => this.stepView = stepView}
+            callback={passProps.callback}
             navigator={navigator}/>
         );
       },
@@ -110,9 +113,13 @@ let Router = {
           </Button>
         );
       },
+      addStep(navigator) {
+        this.stepView.pressAdd()
+        navigator.pop()
+      },
       renderRightButton(navigator) {
         return (
-          <Button onPress={()=> navigator.pop()}>
+          <Button onPress={()=> this.addStep(navigator)}>
             ADD
           </Button>
         );
