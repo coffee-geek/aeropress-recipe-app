@@ -35,12 +35,14 @@ let Router = {
       }
   },
 
-  getNewRecipeRoute() {
+  getNewRecipeRoute(passProps) {
       return {
         renderScene(navigator) {
           return (
             <RecipeView
+              ref={recipeView => this.recipeView = recipeView}
               navigator={navigator}
+              callback={passProps.callback}
               recipe={{
                 method_name: 'STANDARD',
                 steps: []
@@ -57,9 +59,13 @@ let Router = {
             </Button>
           );
         },
+        addRecipe(navigator) {
+          this.recipeView.pressSave();
+          navigator.pop();
+        },
         renderRightButton(navigator) {
           return (
-            <Button onPress={()=> navigator.pop()}>
+            <Button onPress={()=> this.addRecipe(navigator)}>
               SAVE
             </Button>
           );

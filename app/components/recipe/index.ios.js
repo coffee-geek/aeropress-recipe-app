@@ -95,6 +95,9 @@ let RecipeView = React.createClass({
       </Picker>
     );
   },
+  pressSave: function() {
+    this.props.callback(this.state.recipe);
+  },
   render: function() {
     return (
       <View style={{flex:1}}>

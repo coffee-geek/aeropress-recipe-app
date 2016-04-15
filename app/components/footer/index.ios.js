@@ -17,7 +17,9 @@ let Router = require("../../router.js");
 
 var FooterView = React.createClass({
   createNewRecipe: function(recipe){
-    let route = Router.getNewRecipeRoute();
+    let route = Router.getNewRecipeRoute({
+      callback: this.props.newRecipe,
+    });
     this.props.navigator.push(route)
   },
   render: function() {
