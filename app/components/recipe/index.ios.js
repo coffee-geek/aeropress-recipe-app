@@ -23,7 +23,6 @@ let RecipeView = React.createClass({
   getInitialState() {
     return {
       recipe: Object.assign({}, this.props.recipe),
-      isShowMethodPicker: false,
     };
   },
   selectPlace(){
@@ -68,31 +67,24 @@ let RecipeView = React.createClass({
     );
   },
   toggleMethodPicker: function() {
-    this.setState({
-      isShowMethodPicker: !this.state.isShowMethodPicker,
-    });
+    this.picker.toggle();
   },
   renderMethodPicker: function() {
-    if (this.state.isShowMethodPicker) {
-      return (
-        <View>
-          <Picker
-            style={{height: 320}}
-            selectedValue={this.state.recipe.method_name}
-            onValueChange={(name) => console.log(name) }
-            pickerData={['STANDARD', 'INVERTED']}
-            onPickerDone={(val)=> {
-              this.state.recipe.method_name = val;
-              this.setState({
-                recipe: this.state.recipe
-              })
-            }}>
-          </Picker>
-        </View>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <Picker
+        ref={picker => this.picker = picker}
+        style={{height: 320}}
+        selectedValue={this.state.recipe.method_name}
+        onValueChange={(name) => console.log(name) }
+        pickerData={['STANDARD', 'INVERTED']}
+        onPickerDone={(val)=> {
+          this.state.recipe.method_name = val;
+          this.setState({
+            recipe: this.state.recipe
+          })
+        }}>
+      </Picker>
+    );
   },
   render: function() {
     return (
