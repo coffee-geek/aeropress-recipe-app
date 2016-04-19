@@ -13,8 +13,6 @@ module.exports = StyleSheet.create({
     borderColor: '#333',
     flex: 1,
     flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'stretch'
 
   },
   leftPanel: {

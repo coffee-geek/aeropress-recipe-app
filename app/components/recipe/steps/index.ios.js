@@ -23,10 +23,11 @@ let StepListView = React.createClass({
     }
     return (
       <View>
-        <Text>STEPS</Text>
+        <Text style={styles.title}>STEPS</Text>
         {this.props.steps.map((step, index)=> {
           return (
             <StepCell
+              rowID={index+1}
               key={index}
               onSelect={() => this.selectStep(step)}
               step={step}/>
